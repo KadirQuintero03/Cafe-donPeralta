@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B03C4452-1756-4FD9-A45C-D802DA17CCBE}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Presentacion</RootNamespace>
+    <AssemblyName>Presentacion</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminAccess.cs" />
+    <Compile Include="Factura_Venta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Factura_Venta.Designer.cs">
+      <DependentUpon>Factura_Venta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Log_in.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Log_in.Designer.cs">
+      <DependentUpon>Log_in.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManejoAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManejoAdmin.Designer.cs">
+      <DependentUpon>ManejoAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manejo_Empleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manejo_Empleados.Designer.cs">
+      <DependentUpon>Manejo_Empleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nomina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nomina.Designer.cs">
+      <DependentUpon>Nomina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Registro_Cafe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro_Cafe.Designer.cs">
+      <DependentUpon>Registro_Cafe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registro_Escogidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro_Escogidos.Designer.cs">
+      <DependentUpon>Registro_Escogidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registro_Pedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro_Pedidos.Designer.cs">
+      <DependentUpon>Registro_Pedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sig_in.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sig_in.Designer.cs">
+      <DependentUpon>Sig_in.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{e0a21a5f-eb57-40c0-b00d-76fa6eef0b29}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logica\Logica.csproj">
+      <Project>{a6e0f791-6165-41a5-a92e-3d223dd875a6}</Project>
+      <Name>Logica</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Factura_Venta.resx">
+      <DependentUpon>Factura_Venta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Log_in.resx">
+      <DependentUpon>Log_in.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManejoAdmin.resx">
+      <DependentUpon>ManejoAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manejo_Empleados.resx">
+      <DependentUpon>Manejo_Empleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nomina.resx">
+      <DependentUpon>Nomina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro_Cafe.resx">
+      <DependentUpon>Registro_Cafe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro_Escogidos.resx">
+      <DependentUpon>Registro_Escogidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro_Pedidos.resx">
+      <DependentUpon>Registro_Pedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sig_in.resx">
+      <DependentUpon>Sig_in.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_close_delete_exit_logout_remove_x_icon_123217.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minussign_87504.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4115235-exit-logout-sign-out_114030.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login de la aplicación 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Log In %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Log In.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Log In %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Log In %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Log In1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sign In.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sign In %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Log In V2.0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Registrar Cafes.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Registrar Cafes1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Registrar Cafes %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Registrar Cafes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Registrar Cafes %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Registrar Cafes %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Registrar Cafes %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PEDIDOS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NOMINA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sign In1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NOMINA1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NOMINA %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NOMINA2.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
