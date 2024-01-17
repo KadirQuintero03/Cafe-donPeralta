@@ -5,7 +5,7 @@ nombre VARCHAR2(10) NOT NULL,
 nombre2 VARCHAR2(10),
 apellido VARCHAR2(10) NOT NULL,
 apellido2 VARCHAR2(10),
-contraseña VARCHAR2(15) NOT NULL); 
+contraseï¿½a VARCHAR2(15) NOT NULL); 
 ALTER TABLE ADMINS ADD CONSTRAINT PK_ADMINS_cedula PRIMARY KEY (cedula);
 
 CREATE OR REPLACE PROCEDURE insertar_administrador (A_cedula ADMINS.cedula%TYPE,
@@ -13,11 +13,11 @@ A_nombre ADMINS.nombre%TYPE,
 A_nombre2 ADMINS.nombre2%TYPE,
 A_apellido ADMINS.apellido%TYPE,
 A_apellido2 ADMINS.apellido2%TYPE,
-A_contraseña ADMINS.contraseña%TYPE)
+A_contraseï¿½a ADMINS.contraseï¿½a%TYPE)
 IS
 BEGIN
-    INSERT INTO ADMINS(cedula, nombre, nombre2, apellido, apellido2, contraseña) 
-    VALUES (A_cedula, A_nombre, A_nombre2, A_apellido, A_apellido2, A_contraseña);
+    INSERT INTO ADMINS(cedula, nombre, nombre2, apellido, apellido2, contraseï¿½a) 
+    VALUES (A_cedula, A_nombre, A_nombre2, A_apellido, A_apellido2, A_contraseï¿½a);
 END;
 --------------------------------------------------------------------------------
 
@@ -416,7 +416,7 @@ A_nombre ADMINS.nombre%TYPE,
 A_nombre2 ADMINS.nombre2%TYPE,
 A_apellido ADMINS.apellido%TYPE,
 A_apellido2 ADMINS.apellido2%TYPE,
-A_contraseña ADMINS.contraseña%TYPE);
+A_contraseï¿½a ADMINS.contraseï¿½a%TYPE);
 END PK_proce_administrador;
 
 CREATE OR REPLACE PACKAGE BODY  PK_proce_administrador
@@ -426,11 +426,11 @@ A_nombre ADMINS.nombre%TYPE,
 A_nombre2 ADMINS.nombre2%TYPE,
 A_apellido ADMINS.apellido%TYPE,
 A_apellido2 ADMINS.apellido2%TYPE,
-A_contraseña ADMINS.contraseña%TYPE)
+A_contraseï¿½a ADMINS.contraseï¿½a%TYPE)
 IS
 BEGIN
-    INSERT INTO ADMINS(cedula, nombre, nombre2, apellido, apellido2, contraseña) 
-    VALUES (A_cedula, A_nombre, A_nombre2, A_apellido, A_apellido2, A_contraseña);
+    INSERT INTO ADMINS(cedula, nombre, nombre2, apellido, apellido2, contraseï¿½a) 
+    VALUES (A_cedula, A_nombre, A_nombre2, A_apellido, A_apellido2, A_contraseï¿½a);
 END;
 END  PK_proce_administrador;
 --------------------------------------------------------------------------------
