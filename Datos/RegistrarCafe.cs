@@ -4,7 +4,7 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace Datos
 {
-    public class RegistrarCafe:Conexion
+    public class RegistrarCafe : Conexion
     {
         //lleva una secuencia 
         OracleCommand command;

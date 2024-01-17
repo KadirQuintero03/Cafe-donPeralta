@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public class Adminservices :Iservice<Admin>
+    public class Adminservices : Iservice<Admin>
     {
-        RepositorioAdmin admi =  new RepositorioAdmin();
+        RepositorioAdmin admi = new RepositorioAdmin();
         Conexion conexion = new Conexion();
 
         public string Add(Admin admin)
@@ -18,8 +18,6 @@ namespace Logica
             var estado = admi.RegistrarUser(admin);
             return estado;
         }
-
-
 
         public string Buscar(Admin entity)
         {
@@ -36,11 +34,10 @@ namespace Logica
             try
             {
                 var estado = admi.VerficiarAdmins(admin);
-                return estado ;
+                return estado;
             }
             catch (Exception e)
             {
-
                 return e.Message;
             }
         }

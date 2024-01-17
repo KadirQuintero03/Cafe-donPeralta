@@ -8,7 +8,7 @@ namespace Entidades
 {
     public class Nomina
     {
-        
+
         public string CC_Empleado { get; set; }
         public string CC_ADMIN { get; set; }
         public string Nombre { get; set; }
@@ -19,6 +19,5 @@ namespace Entidades
         public decimal Total_pagado { get; set; }
         public DateTime Fecha_nomina { get; set; }
 
-       
     }
 }
