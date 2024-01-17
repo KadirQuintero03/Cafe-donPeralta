@@ -1,76 +1,82 @@
 --------------------------------------------------------------------------------
 --ESPACIO PARA LA TABLA ADMINS
-CREATE TABLE ADMINS(cedula VARCHAR2(11),
-nombre VARCHAR2(10) NOT NULL,
-nombre2 VARCHAR2(10),
-apellido VARCHAR2(10) NOT NULL,
-apellido2 VARCHAR2(10),
-contrase�a VARCHAR2(15) NOT NULL); 
-ALTER TABLE ADMINS ADD CONSTRAINT PK_ADMINS_cedula PRIMARY KEY (cedula);
+CREATE TABLE ADMINS(
+ID_card VARCHAR2(11),
+first_name VARCHAR2(10) NOT NULL,
+second_name VARCHAR2(10),
+last_name VARCHAR2(10) NOT NULL,
+second_last_name VARCHAR2(10),
+pasword VARCHAR2(15) NOT NULL); 
+ALTER TABLE ADMINS ADD CONSTRAINT PK_ADMINS_ID_card PRIMARY KEY (ID_card);
 
-CREATE OR REPLACE PROCEDURE insertar_administrador (A_cedula ADMINS.cedula%TYPE,
-A_nombre ADMINS.nombre%TYPE,
-A_nombre2 ADMINS.nombre2%TYPE,
-A_apellido ADMINS.apellido%TYPE,
-A_apellido2 ADMINS.apellido2%TYPE,
-A_contrase�a ADMINS.contrase�a%TYPE)
+CREATE OR REPLACE PROCEDURE insert_manager (
+A_ID_card ADMINS.ID_card%TYPE,
+A_first_name ADMINS.first_name%TYPE,
+A_second_name ADMINS.second_name%TYPE,
+A_last_name ADMINS.last_name%TYPE,
+A_second_last_name ADMINS.second_last_name%TYPE,
+A_pasword ADMINS.pasword%TYPE)
 IS
 BEGIN
-    INSERT INTO ADMINS(cedula, nombre, nombre2, apellido, apellido2, contrase�a) 
-    VALUES (A_cedula, A_nombre, A_nombre2, A_apellido, A_apellido2, A_contrase�a);
+    INSERT INTO ADMINS(ID_card, first_name, second_name, last_name, second_last_name, pasword) 
+    VALUES (A_ID_card, A_first_name, A_second_name, A_last_name, A_second_last_name, A_pasword);
 END;
 --------------------------------------------------------------------------------
 
 
 --------------------------------------------------------------------------------
 --ESPACIO PARA LA TABLA EMPLEADOS
-CREATE TABLE EMPLEADOS(cedula_admin VARCHAR2(11),
-cedula VARCHAR2(11),
-nombre VARCHAR2(10) NOT NULL,
-nombre2 VARCHAR2(10),   
-apellido VARCHAR2(10) NOT NULL,
-apellido2 VARCHAR2(10),
-fecha_inicio DATE DEFAULT SYSDATE); 
-ALTER TABLE EMPLEADOS ADD CONSTRAINT PK_EMPLEADOS_cedula PRIMARY KEY (cedula);
-ALTER TABLE EMPLEADOS ADD CONSTRAINT FK_EMPLEADOS_cedula_admin FOREIGN KEY(cedula_admin) REFERENCES ADMINS(cedula);
+CREATE TABLE EMPLOYEES(
+ID_card_manager VARCHAR2(11), --Cedula de Manager / Foranea
+ID_card VARCHAR2(11), --Cedula de empleado / Primaria
+first_name VARCHAR2(10) NOT NULL,
+second_name VARCHAR2(10),   
+last_name VARCHAR2(10) NOT NULL,
+second_last_name VARCHAR2(10),
+date_start DATE DEFAULT SYSDATE); 
+ALTER TABLE EMPLOYEES ADD CONSTRAINT PK_EMPLEADOS_ID_card PRIMARY KEY (ID_card);
+ALTER TABLE EMPLOYEES ADD CONSTRAINT FK_EMPLEADOS_ID_card_manager FOREIGN KEY(ID_card_manager) REFERENCES ADMINS(ID_card);
 
-CREATE OR REPLACE PROCEDURE insertar_empleado (E_cedula_A ADMINS.cedula%TYPE,
-E_cedula EMPLEADOS.cedula%TYPE,
-E_nombre EMPLEADOS.nombre%TYPE,
-E_nombre2 EMPLEADOS.nombre2%TYPE,
-E_apellido EMPLEADOS.apellido%TYPE,
-E_apellido2 EMPLEADOS.apellido2%TYPE)
+CREATE OR REPLACE PROCEDURE insert_employee ( --Procedimiento para insertar a un empleado
+E_ID_card_manager ADMINS.ID_card%TYPE,
+E_ID_card EMPLOYEES.ID_card%TYPE,
+E_first_name EMPLOYEES.first_name%TYPE,
+E_second_name EMPLOYEES.second_name%TYPE,
+E_last_name EMPLOYEES.last_name%TYPE,
+E_second_last_name EMPLOYEES.second_last_name%TYPE)
 IS
 BEGIN
-    INSERT INTO EMPLEADOS(cedula_admin, cedula, nombre, nombre2, apellido, apellido2) 
-    VALUES (E_cedula_A, E_cedula, E_nombre, E_nombre2, E_apellido, E_apellido2);
+    INSERT INTO EMPLOYEES(ID_card_manager, ID_card, first_name, second_name, last_name, second_last_name) 
+    VALUES (E_ID_card_manager, E_ID_card, E_first_name, E_second_name, E_last_name, E_second_last_name);
 END;
 
-CREATE OR REPLACE PROCEDURE modificar_empleado(E_cedula EMPLEADOS.cedula%TYPE,
-E_nombre EMPLEADOS.nombre%TYPE,
-E_nombre2 EMPLEADOS.nombre2%TYPE,
-E_apellido EMPLEADOS.apellido%TYPE,
-E_apellido2 EMPLEADOS.apellido2%TYPE)
+CREATE OR REPLACE PROCEDURE change_employee(
+E_ID_card EMPLOYEES.ID_card%TYPE,
+E_first_name EMPLOYEES.first_name%TYPE,
+E_second_name EMPLOYEES.second_name%TYPE,
+E_last_name EMPLOYEES.last_name%TYPE,
+E_second_last_name EMPLOYEES.second_last_name%TYPE)
 IS
 BEGIN
-    UPDATE EMPLEADOS
-    SET nombre = E_nombre, nombre2 = E_nombre2, apellido = E_apellido2, apellido2 = E_apellido2 
-    WHERE EMPLEADOS.cedula = E_cedula;
+    UPDATE EMPLOYEES
+    SET first_name = E_first_name, second_name = E_second_name, last_name = E_last_name, second_last_name = E_second_last_name 
+    WHERE EMPLOYEES.ID_card = E_ID_card;
 END;
 
-CREATE OR REPLACE PROCEDURE eliminar_empleado(E_cedula EMPLEADOS.cedula%TYPE)
+CREATE OR REPLACE PROCEDURE delete_employee(E_ID_card EMPLOYEES.ID_card%TYPE)
 IS
 BEGIN
     DELETE 
-    FROM EMPLEADOS
-    WHERE  EMPLEADOS.cedula = E_cedula;
+    FROM EMPLOYEES
+    WHERE  EMPLOYEES.ID_card = E_ID_card;
 END;
 --------------------------------------------------------------------------------
 
 
 --------------------------------------------------------------------------------
 --ESPACIO PARA LA TABLA NOMINAS
-CREATE TABLE NOMINAS(id_nomina VARCHAR2(3),
+CREATE TABLE NOMINAS(
+id_nomina VARCHAR2(3),
 cedula_empleado VARCHAR2(11),
 cedula_admin VARCHAR2(11),
 nombre VARCHAR2(10),
@@ -83,7 +89,9 @@ fecha DATE);
 ALTER TABLE NOMINAS ADD CONSTRAINT PK_NOMINAS_id_nomina PRIMARY KEY (id_nomina);
 ALTER TABLE NOMINAS ADD CONSTRAINT FK_NOMINAS_cedula_admin FOREIGN KEY(cedula_admin) REFERENCES ADMINS(cedula);
 ALTER TABLE NOMINAS ADD CONSTRAINT FK_NOMINAS_cedula_empleado FOREIGN KEY(cedula_empleado) REFERENCES EMPLEADOS(cedula);
+
 CREATE SEQUENCE iinsertar_seque  START WITH 1;
+
 CREATE OR REPLACE TRIGGER insertar_id_nomina
 BEFORE INSERT ON NOMINAS
 FOR EACH ROW
@@ -124,7 +132,8 @@ END;
 
 --------------------------------------------------------------------------------
 --ESPACIO PARA LA TABLA FACTURA_VENTAS
-CREATE TABLE FACTURA_VENTAS(id_venta VARCHAR2(3),
+CREATE TABLE FACTURA_VENTAS(
+id_venta VARCHAR2(3),
 nombre_empresa VARCHAR(20),
 nombre_jefe VARCHAR2(10),
 apellido_jefe VARCHAR2(10),
@@ -148,7 +157,8 @@ END;
 
 --------------------------------------------------------------------------------
 --ESPACIO PARA LA TABLA DETALLE_FACTURA_VENTA
-CREATE TABLE DETALLE_FACTURA_VENTAS(id_detalle_venta VARCHAR2(3),
+CREATE TABLE DETALLE_FACTURA_VENTAS(
+id_detalle_venta VARCHAR2(3),
 cedula_admin VARCHAR2(11),
 id_venta VARCHAR2(3),
 id_cafe VARCHAR2(2),
@@ -172,7 +182,8 @@ BEGIN
     SELECT seq_id_detalleV.NEXTVAL INTO :NEW.id_detalle_venta FROM DUAL;
 END;
 
-CREATE OR REPLACE PROCEDURE insertar_detalleV(DFV_cedula_admin DETALLE_FACTURA_VENTAS.cedula_admin%TYPE,
+CREATE OR REPLACE PROCEDURE insertar_detalleV(
+DFV_cedula_admin DETALLE_FACTURA_VENTAS.cedula_admin%TYPE,
 DFV_id_venta DETALLE_FACTURA_VENTAS.id_venta%TYPE,
 DFV_id_cafe DETALLE_FACTURA_VENTAS.id_cafe%TYPE,
 DFV_id_tipoC DETALLE_FACTURA_VENTAS.id_tipoC%TYPE,
@@ -213,7 +224,8 @@ END;
 
 --------------------------------------------------------------------------------
 --ESPACIO PARA LA TABLA FACTURA_PEDIDOS
-CREATE TABLE FACTURA_PEDIDOS(id_pedido VARCHAR2(3),
+CREATE TABLE FACTURA_PEDIDOS(
+id_pedido VARCHAR2(3),
 nombre_producto VARCHAR2(20),
 nombre_empleado  VARCHAR2(10),
 apellido_empleado VARCHAR2(10),
@@ -242,7 +254,8 @@ END;
 
 --------------------------------------------------------------------------------
 --ESPACIO PARA LA TABLA DETALLE_PEDIDOS
-CREATE TABLE DETALLE_PEDIDOS(id_detalle_pedido VARCHAR2(3),
+CREATE TABLE DETALLE_PEDIDOS(
+id_detalle_pedido VARCHAR2(3),
 id_pedido VARCHAR2(3),
 id_producto VARCHAR(2),
 cedula_empleado VARCHAR2(11),
@@ -261,7 +274,8 @@ BEGIN
     SELECT seq_id_detalleP.NEXTVAL INTO :NEW.id_detalle_pedido FROM DUAL;
 END;
 
-CREATE OR REPLACE PROCEDURE insertar_detalleP (DP_id_pedido FACTURA_PEDIDOS.id_pedido%TYPE,
+CREATE OR REPLACE PROCEDURE insertar_detalleP (
+DP_id_pedido FACTURA_PEDIDOS.id_pedido%TYPE,
 DP_id_producto PRODUCTOS.id_producto%TYPE,
 DP_cedula_empleado EMPLEADOS.cedula%TYPE,
 DP_cantidad DETALLE_PEDIDOS.cantidad%TYPE)
@@ -294,7 +308,8 @@ END;
 
 --------------------------------------------------------------------------------
 --ESPACIO PARA LA TABLA REGCAFES
-CREATE TABLE REGCAFES(id_rcafe VARCHAR2(3),
+CREATE TABLE REGCAFES(
+id_rcafe VARCHAR2(3),
 cedula_admin VARCHAR2(11),
 cereza_kilos NUMBER(8,3),
 secos_kilos NUMBER(8,3),
@@ -314,7 +329,8 @@ BEGIN
     FROM DUAL;
 END;
 
-CREATE OR REPLACE PROCEDURE insertar_regcafes(RC_cedula_admin ADMINS.cedula%TYPE,
+CREATE OR REPLACE PROCEDURE insertar_regcafes(
+RC_cedula_admin ADMINS.cedula%TYPE,
 RC_cereza_kilos REGCAFES.cereza_kilos%TYPE,
 RC_secos_kilos REGCAFES.secos_kilos%TYPE)
 IS
@@ -322,7 +338,8 @@ BEGIN
     INSERT INTO REGCAFES (cedula_admin, cereza_kilos, secos_kilos) VALUES (RC_cedula_admin, RC_cereza_kilos, RC_secos_kilos);
 END;
 
-CREATE OR REPLACE PROCEDURE modificar_regcafes(RC_id_rcafe REGCAFES.id_rcafe%TYPE,
+CREATE OR REPLACE PROCEDURE modificar_regcafes(
+RC_id_rcafe REGCAFES.id_rcafe%TYPE,
 RC_cereza_kilos REGCAFES.cereza_kilos%TYPE,
 RC_secos_kilos REGCAFES.secos_kilos%TYPE,
 RC_fecha REGCAFES.fecha%TYPE)
@@ -337,7 +354,8 @@ END;
 
 --------------------------------------------------------------------------------
 --ESPACIO PARA LA TABLA REGESCOGIDOS
-CREATE TABLE REGESCOGIDOS(id_escogido VARCHAR2(3),
+CREATE TABLE REGESCOGIDOS(
+id_escogido VARCHAR2(3),
 cedula_admin VARCHAR2(11),
 cedula_empleado VARCHAR2(11),
 cantidad VARCHAR2(3),
@@ -357,7 +375,8 @@ BEGIN
     FROM DUAL;
 END;
 
-CREATE OR REPLACE PROCEDURE insertar_escogidos (RE_cedula_admin ADMINS.cedula%TYPE,
+CREATE OR REPLACE PROCEDURE insertar_escogidos (
+RE_cedula_admin ADMINS.cedula%TYPE,
 RE_cedula_empleado EMPLEADOS.cedula%TYPE,
 RE_cantidad REGESCOGIDOS.cantidad%TYPE,
 RE_fecha REGESCOGIDOS.fecha%TYPE)
@@ -367,7 +386,8 @@ BEGIN
     VALUES (RE_cedula_admin, RE_cedula_empleado, RE_cantidad, RE_fecha);
 END;
 
-CREATE OR REPLACE PROCEDURE modificar_escogidos (RE_id_escogido REGESCOGIDOS.id_escogido%TYPE,
+CREATE OR REPLACE PROCEDURE modificar_escogidos (
+RE_id_escogido REGESCOGIDOS.id_escogido%TYPE,
 RE_cedula_empleado EMPLEADOS.cedula%TYPE,
 RE_cantidad REGESCOGIDOS.cantidad%TYPE,
 RE_fecha REGESCOGIDOS.fecha%TYPE)
@@ -390,7 +410,8 @@ ALTER TABLE CAFES ADD CONSTRAINT PK_CAFES_id_cafe PRIMARY KEY (id_cafe);
 
 --------------------------------------------------------------------------------
 --ESPACIO PARA LA TABLA TIPO DE CAFE
-CREATE TABLE TIPOS_CAFES(id_cafe VARCHAR2(2),
+CREATE TABLE TIPOS_CAFES(
+id_cafe VARCHAR2(2),
 id_tipocafe VARCHAR2(2),
 nombre_tipocafe VARCHAR2(15));
 ALTER TABLE TIPOS_CAFES ADD CONSTRAINT PK_TIPOS_CAFES_id_tipoCafe PRIMARY KEY (id_tipoCafe);
@@ -400,7 +421,8 @@ ALTER TABLE TIPOS_CAFES ADD CONSTRAINT FK_REGCAFES_id_cafe FOREIGN KEY(id_cafe) 
 
 --------------------------------------------------------------------------------
 --ESPACIO PARA LA TABLA PRODUCTOS
-CREATE TABLE PRODUCTOS (id_producto VARCHAR2(2),
+CREATE TABLE PRODUCTOS (
+id_producto VARCHAR2(2),
 nombre_producto VARCHAR2(15),
 precio_producto NUMBER(10,2));
 ALTER TABLE PRODUCTOS ADD CONSTRAINT PK_PRODUCTOS_id_producto PRIMARY KEY (id_producto); 
@@ -411,7 +433,8 @@ ALTER TABLE PRODUCTOS ADD CONSTRAINT PK_PRODUCTOS_id_producto PRIMARY KEY (id_pr
 --PAQUETE PARA PROCEDIMIENTOS DEL ADMINISTRADORES
 CREATE OR REPLACE PACKAGE PK_proce_administrador
 AS
-PROCEDURE insertar_administrador (A_cedula ADMINS.cedula%TYPE,
+PROCEDURE insertar_administrador (
+A_cedula ADMINS.cedula%TYPE,
 A_nombre ADMINS.nombre%TYPE,
 A_nombre2 ADMINS.nombre2%TYPE,
 A_apellido ADMINS.apellido%TYPE,
@@ -421,7 +444,8 @@ END PK_proce_administrador;
 
 CREATE OR REPLACE PACKAGE BODY  PK_proce_administrador
 AS
-PROCEDURE insertar_administrador (A_cedula ADMINS.cedula%TYPE,
+PROCEDURE insertar_administrador (
+A_cedula ADMINS.cedula%TYPE,
 A_nombre ADMINS.nombre%TYPE,
 A_nombre2 ADMINS.nombre2%TYPE,
 A_apellido ADMINS.apellido%TYPE,
@@ -440,14 +464,16 @@ END  PK_proce_administrador;
 --PAQUETE PARA PROCEDIMIENTOS DEL EMPLEADOS
 CREATE OR REPLACE PACKAGE PK_proce_empleado
 AS
-PROCEDURE insertar_empleado (E_cedula_A ADMINS.cedula%TYPE,
+PROCEDURE insertar_empleado (
+E_cedula_A ADMINS.cedula%TYPE,
 E_cedula EMPLEADOS.cedula%TYPE,
 E_nombre EMPLEADOS.nombre%TYPE,
 E_nombre2 EMPLEADOS.nombre2%TYPE,
 E_apellido EMPLEADOS.apellido%TYPE,
 E_apellido2 EMPLEADOS.apellido2%TYPE);
 
-PROCEDURE modificar_empleado(E_cedula EMPLEADOS.cedula%TYPE,
+PROCEDURE modificar_empleado(
+E_cedula EMPLEADOS.cedula%TYPE,
 E_nombre EMPLEADOS.nombre%TYPE,
 E_nombre2 EMPLEADOS.nombre2%TYPE,
 E_apellido EMPLEADOS.apellido%TYPE,
@@ -458,7 +484,8 @@ END PK_proce_empleado;
  
 CREATE OR REPLACE PACKAGE BODY PK_proce_empleado
 AS
-PROCEDURE insertar_empleado (E_cedula_A ADMINS.cedula%TYPE,
+PROCEDURE insertar_empleado (
+E_cedula_A ADMINS.cedula%TYPE,
 E_cedula EMPLEADOS.cedula%TYPE,
 E_nombre EMPLEADOS.nombre%TYPE,
 E_nombre2 EMPLEADOS.nombre2%TYPE,
@@ -470,7 +497,8 @@ BEGIN
     VALUES (E_cedula_A, E_cedula, E_nombre, E_nombre2, E_apellido, E_apellido2);
 END;
 
-PROCEDURE modificar_empleado(E_cedula EMPLEADOS.cedula%TYPE,
+PROCEDURE modificar_empleado(
+E_cedula EMPLEADOS.cedula%TYPE,
 E_nombre EMPLEADOS.nombre%TYPE,
 E_nombre2 EMPLEADOS.nombre2%TYPE,
 E_apellido EMPLEADOS.apellido%TYPE,
@@ -705,7 +733,7 @@ END PK_proce_regescogido;
 
 CREATE OR REPLACE PACKAGE BODY PK_proce_regescogido
 AS
- PROCEDURE insertar_escogidos (RE_cedula_admin ADMINS.cedula%TYPE,
+PROCEDURE insertar_escogidos (RE_cedula_admin ADMINS.cedula%TYPE,
 RE_cedula_empleado EMPLEADOS.cedula%TYPE,
 RE_cantidad REGESCOGIDOS.cantidad%TYPE,
 RE_fecha REGESCOGIDOS.fecha%TYPE)
