@@ -12,6 +12,5 @@ namespace Entidades
         public string CC_ADMIN { get; set;}
         public string Nombre_Empresa { get; set; }
         public DateTime fecha { get; set; }
-      
     }
 }

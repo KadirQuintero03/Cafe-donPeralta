@@ -12,6 +12,5 @@ namespace Entidades
         public string id_producto { get; set;}
         public string cedula_empleado { get; set; }
         public int cantidad { get; set; }
-
     }
 }

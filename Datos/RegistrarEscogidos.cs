@@ -9,8 +9,11 @@ namespace Datos
     public class RegistrarEscogidos:Conexion
     {
         OracleCommand command;
+
         OracleConnection connection;
+
         Datos.Conexion conexion = new Datos.Conexion();
+
         public string registrarES(Reg_Escogidos registro)
         {
             try
@@ -28,7 +31,7 @@ namespace Datos
                 return "REGISTRO GUARDADO";
             }
             catch (OracleException ex)
-            {
+            {   
                 if (ex.Number == 1)
                 {
                     return "ESTE REGISTRO YA EXISTE."; // Mensaje personalizado para la restricción única
@@ -44,6 +47,7 @@ namespace Datos
                 }
             }
         }
+
         public List<Reg_Escogidos> GetAll(string admin)
         {
             try
@@ -63,10 +67,10 @@ namespace Datos
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
+
         public Reg_Escogidos Mappear(OracleDataReader linea)
         {
             var escogidos = new Reg_Escogidos();
@@ -77,6 +81,7 @@ namespace Datos
             escogidos.Fecha = DateTime.Parse(linea.GetString(4));
             return escogidos;
         }
+
         public string Acturalizar(Reg_Escogidos reg)
         {
             AbrirDB();

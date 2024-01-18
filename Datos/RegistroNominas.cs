@@ -12,8 +12,7 @@ namespace Datos
         OracleConnection connection;
         Datos.Conexion conexion = new Datos.Conexion();
         public string RegistrarNominas(Nomina nomina)
-        {
-           
+        { 
             try
             {
                 AbrirDB();

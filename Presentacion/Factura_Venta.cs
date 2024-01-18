@@ -24,9 +24,13 @@ namespace Presentacion
         IVentas ServicioVentas = new IVentas(); //SERVICIO DE VENTAS
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+
         private extern static void ReleaseCapture();
+
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+        
         void MovimientoPanel()
         {
             ReleaseCapture();
@@ -39,9 +43,8 @@ namespace Presentacion
         }
 
         private void btnRegistrarVentas_Click(object sender, EventArgs e)
-        {
+        {}
 
-        }
         void RegistroDetalle()
         {
             if ((string.IsNullOrEmpty(txtFV_ref_facturaV.Text) || (string.IsNullOrEmpty(txtRV_cafe.Text) || (string.IsNullOrEmpty(txtRV_valorXKilo.Text)) || (string.IsNullOrEmpty(txtRV_valor_B.Text)) || (string.IsNullOrEmpty(txtRV_factor.Text) || (string.IsNullOrEmpty(txtRV_tipocafe.Text)) || (string.IsNullOrEmpty(txtRV_kiloneto.Text)))))) {
@@ -58,7 +61,6 @@ namespace Presentacion
                 {
                     ventas.CC_ADMIN = txtE_cedula_A4.Text;
                 }
-               
                 ventas.Id_Venta = txtFV_ref_facturaV.Text;
                 ventas.cafe = txtRV_cafe.Text;
                 ventas.valor_kilo = decimal.Parse(txtRV_valorXKilo.Text);
@@ -71,13 +73,9 @@ namespace Presentacion
                 LimpiarCamposVentas();
                 dataGridVenta.Rows.Clear();
                 //VerDatosVentas();
-
-
             }
-           
-
-
         }
+
         void RegistroVentas()
         {
             if (string.IsNullOrEmpty(txtFVfacturaV.Text) || (string.IsNullOrEmpty(txtRV_nombre_E.Text)))
@@ -93,7 +91,6 @@ namespace Presentacion
                 var estado = ServicioVentas.Add(ventas);
                 MessageBox.Show(estado.ToString());
                 LimpiarCamposVentas();
-               
             }
             
         }
@@ -101,12 +98,11 @@ namespace Presentacion
         void VerDatosVentas()
         {
             List<Detalle_Factura_Venta> lista = ServicioVentas.GetAlls(txtE_cedula_A4.Text);
-           
+
             if (lista != null)
             {
                 foreach (var item in lista)
                 {
-
                     dataGridVenta.Rows.Add(new object[]
                     {
                     item.Id_Venta,
@@ -122,8 +118,6 @@ namespace Presentacion
                     });
                 }
             }
-           
-
         }
 
         void LimpiarCamposVentas()
@@ -164,13 +158,11 @@ namespace Presentacion
             {
                 dataGridVenta.Rows.Clear();
                 VerDatosVentas();
-
             }
             var busqueda = ServicioVentas.BuscarPorTodo(busquedaVenta.Text,txtE_cedula_A4.Text);
             dataGridVenta.Rows.Clear();
             foreach (var item in busqueda)
             {
-                
                 dataGridVenta.Rows.Add(new object[]
                 {
                     item.Id_Venta,

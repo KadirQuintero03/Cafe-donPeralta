@@ -19,8 +19,6 @@ namespace Logica
             return estado;
         }
 
-
-
         public string Buscar(Admin entity)
         {
             throw new NotImplementedException();
@@ -40,7 +38,6 @@ namespace Logica
             }
             catch (Exception e)
             {
-
                 return e.Message;
             }
         }

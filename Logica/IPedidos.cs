@@ -11,6 +11,7 @@ namespace Logica
     public class IPedidos : Iservice<Pedidos>
     {
         RepositorioPedidos pedidos = new RepositorioPedidos();
+
         Conexion conexion = new Conexion();
 
         public string Add(Pedidos entity)
@@ -18,6 +19,7 @@ namespace Logica
             var estado = pedidos.RegistrarPedido(entity);
             return estado;
         }
+
         public string add(Detalle_Pedidos entity)
         {
             var estado = pedidos.RegistrarDetallePedido(entity);
@@ -37,7 +39,6 @@ namespace Logica
         {
             List<Pedidos> pedidos= new List<Pedidos>(); 
             return pedidos;
-
         }
     }
 }

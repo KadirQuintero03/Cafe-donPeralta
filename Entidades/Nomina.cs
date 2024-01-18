@@ -34,7 +34,5 @@ namespace Entidades
         public decimal Salario_Base { get; set; }
         public decimal Total_pagado { get; set; }
         public DateTime Fecha_nomina { get; set; }
-
-       
     }
 }

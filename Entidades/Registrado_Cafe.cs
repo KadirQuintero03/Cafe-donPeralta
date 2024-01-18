@@ -11,6 +11,5 @@ namespace Entidades
         public float Kilos_cereza { get; set; }
         public float Kilos_secos { get; set; }
         public DateTime Fecha { get; set; }
-
     }
 }

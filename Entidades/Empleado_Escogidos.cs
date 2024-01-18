@@ -11,7 +11,6 @@ namespace Entidades
     {
         public string Cc_empleado { get; set; }
         public DateTime FechaEscogido { get; set; }
-        public float cantidad { get; set; }
-        
+        public float cantidad { get; set; } 
     }
 }

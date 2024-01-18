@@ -13,7 +13,5 @@ namespace Entidades
         public string Cedula_Empleado { get; set; } 
         public decimal cantidad { get; set; }
         public DateTime Fecha { get; set; }
-
-
     }
 }

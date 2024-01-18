@@ -16,9 +16,5 @@ namespace Entidades
         public string apellido { get; set; }
         public decimal total{ get; set; }
         public DateTime fecha { get; set;}
-
-
-
-
     }
 }

@@ -9,7 +9,9 @@ namespace Datos
     {
         //lleva una secuencia 
         OracleCommand command;
+
         OracleConnection connection;
+
         Datos.Conexion conexion = new Datos.Conexion();
 
         public string RegistradoCafe(Reg_Cafés registrado)
@@ -26,7 +28,6 @@ namespace Datos
                 command.ExecuteNonQuery();
                 conexion.CerrarBd();
                 return "Registro Guardado en la Base";
-
             }
             catch (OracleException ex)
             {
@@ -45,6 +46,7 @@ namespace Datos
                 }
             }
         }
+
         public List<Reg_Cafés> GetAll(string admin)
         {
             try
@@ -64,7 +66,6 @@ namespace Datos
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -96,7 +97,6 @@ namespace Datos
             }
             catch (Exception)
             {
-
                 return "NO SE PUDO ACTUALIZAR,VERIFIQUE LOS CAMPOS";
             }
         }

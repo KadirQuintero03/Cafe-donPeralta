@@ -20,10 +20,9 @@ namespace Logica
             iTextSharp.text.Font font = new iTextSharp.text.Font(0);
             Document document = new Document();
             PdfWriter.GetInstance(document,
-             new FileStream(nombrePDF + ".pdf",
-             FileMode.OpenOrCreate));
+            new FileStream(nombrePDF + ".pdf",
+            FileMode.OpenOrCreate));
             document.Open();
-            //document.Add(new Paragraph("LISTADO DE PERSONAS " + "\n" + "\n"));
             Chunk chunk = new Chunk("                                                            REPORTE DE CAFE " + "\n" + "\n",
                 FontFactory.GetFont("Times New Roman", 12,
                 iTextSharp.text.Font.BOLD));
@@ -61,8 +60,8 @@ namespace Logica
             iTextSharp.text.Font font = new iTextSharp.text.Font(0);
             Document document = new Document();
             PdfWriter.GetInstance(document,
-             new FileStream(nombrePDF + ".pdf",
-             FileMode.OpenOrCreate));
+            new FileStream(nombrePDF + ".pdf",
+            FileMode.OpenOrCreate));
             document.Open();
             //document.Add(new Paragraph("LISTADO DE PERSONAS " + "\n" + "\n"));
             Chunk chunk = new Chunk("                                            " + nombrePDF + " " + "\n" + "\n",
@@ -110,8 +109,8 @@ namespace Logica
             iTextSharp.text.Font font = new iTextSharp.text.Font(0);
             Document document = new Document();
             PdfWriter.GetInstance(document,
-             new FileStream(nombrePDF + ".pdf",
-             FileMode.OpenOrCreate));
+            new FileStream(nombrePDF + ".pdf",
+            FileMode.OpenOrCreate));
             document.Open();
             //document.Add(new Paragraph("LISTADO DE PERSONAS " + "\n" + "\n"));
             Chunk chunk = new Chunk("                                            " + nombrePDF + " " + "\n" + "\n",
@@ -132,7 +131,6 @@ namespace Logica
             tabla.AddCell(new Phrase("CEDULA EMPLEADO", font));
             tabla.AddCell(new Phrase("CANTIDAD", font));
             tabla.AddCell(new Phrase("FECHA DE REGISTRO", font));
-          
 
             foreach (var item in ListRegEscogidos)
             {
@@ -140,11 +138,9 @@ namespace Logica
                 tabla.AddCell(new Phrase(item.Cedula_Empleado, font));
                 tabla.AddCell(new Phrase(item.cantidad.ToString(), font));
                 tabla.AddCell(new Phrase(item.Fecha.ToShortDateString(), font));
-               
             }
             document.Add(tabla);
             document.Close();
-
         }
     }
 }

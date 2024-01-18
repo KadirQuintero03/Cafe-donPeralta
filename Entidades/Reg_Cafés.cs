@@ -13,6 +13,5 @@ namespace Entidades
         public string Cereza_Kilos { get; set; }
         public string Secos_Kilos { get; set; }
         public DateTime Fecha { get; set; }
-
     }
 }

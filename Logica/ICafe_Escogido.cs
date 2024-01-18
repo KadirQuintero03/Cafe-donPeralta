@@ -11,7 +11,7 @@ namespace Logica
 {
     public class ICafe_Escogido : Iservice<Reg_Escogidos>
     {
-       RegistrarEscogidos registrar = new RegistrarEscogidos();
+    RegistrarEscogidos registrar = new RegistrarEscogidos();
         public string Add(Reg_Escogidos entity)
         {
             var estado = registrar.registrarES(entity);
@@ -35,7 +35,6 @@ namespace Logica
         {
             List<Reg_Escogidos> lista = new List<Reg_Escogidos>();
             return lista;
-
         }
     }
 }

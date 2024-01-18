@@ -13,6 +13,5 @@ namespace Entidades
         public string nombre2 { get; set; }
         public string apellido { get; set; }
         public string apellido2 { get; set; }
-       
     }
 }

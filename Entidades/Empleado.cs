@@ -10,7 +10,5 @@ namespace Entidades
     {
         public string CC_ADMIN { get; set; }
         public DateTime FechaInicio { get; set; }
-       
-        //public DateTime FechaFinal { get; set; }
     }
 }
