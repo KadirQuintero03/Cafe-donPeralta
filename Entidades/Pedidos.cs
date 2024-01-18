@@ -9,11 +9,16 @@ namespace Entidades
 {
     public class Pedidos
     {
-        public string CC_Empleado { get; set; }
-        public string Nombre { get; set; }
-        public string Nombre_pedido { get; set; }
-        public decimal Precio { get; set; }
-        public int Cantidad { get; set; }
-        public decimal Total { get; set; }
+
+        public string Id_pedido { get; set; }
+        public string Nombre_producto { get; set; }
+        public string Nombre_empleado { get; set; }
+        public string apellido { get; set; }
+        public decimal total{ get; set; }
+        public DateTime fecha { get; set;}
+
+
+
+
     }
 }

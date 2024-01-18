@@ -1,6 +1,7 @@
 ﻿using Entidades;
 using Logica;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ namespace Presentacion
 {
     public partial class Manejo_Empleados : Form
     {
+        public Log_in logInForm;
         public Manejo_Empleados()
         {
             InitializeComponent();
@@ -28,62 +30,60 @@ namespace Presentacion
 
         void RegistroEmpleados()
         {
+            if (((string.IsNullOrEmpty(txtE_cedula_A.Text) || (string.IsNullOrEmpty(txtE_cedula.Text) || (string.IsNullOrEmpty(txtE_nombre.Text) || (string.IsNullOrEmpty(txtE_apellido.Text)))))))
+            {
+                MessageBox.Show("DIGITE VALORES EN LOS CAMPOS");
+            }
 
-            Logica.IEmpleados iempleados = new Logica.IEmpleados();
-            var empleado = new Empleado();
+            else
+            {
+                Logica.IEmpleados iempleados = new Logica.IEmpleados();
+                var empleado = new Empleado();
 
+                empleado.CC_ADMIN = txtE_cedula_A.Text;
+                empleado.cedula = txtE_cedula.Text;
+                empleado.nombre = txtE_nombre.Text;
+                empleado.nombre2 = txtE_nombre2.Text;
+                empleado.apellido = txtE_apellido.Text;
+                empleado.apellido2 = txtE_apellido2.Text;
+                var estado = iempleados.Add(empleado);
+                MessageBox.Show(estado.ToString());
 
-            empleado.CC_ADMIN = txtE_cedula_A.Text;
-            empleado.cedula = txtE_cedula.Text;
-            empleado.nombre = txtE_nombre.Text;
-            empleado.nombre2 = txtE_nombre2.Text;
-            empleado.apellido = txtE_apellido.Text;
-            empleado.apellido2 = txtE_apellido2.Text;
-            var estado = iempleados.Add(empleado);
-            MessageBox.Show(estado.ToString());
+                LimpiarCampoEmpleados();
+                if (estado.StartsWith("u"))
+                {
+                    dataGridEmpleado.Rows.Clear();
+                }
+                
+                VerDatosEmpleados();
+            }
+                
         }
 
         void VerDatosEmpleados()
         {
-            List<Empleado> lista = ServicioEmpleados.GetAll();
-            if ((lista == null) || (lista.Count == 0))
+            List<Empleado> lista = ServicioEmpleados.GetAll(txtE_cedula_A.Text);
+            
+           if (lista != null)
             {
-                return;
-            }
-            else
-            {
-                dataGridEmpleado.Rows.Clear();
+
                 foreach (var item in lista)
                 {
-                    DataGridViewRow fila = new DataGridViewRow();
 
-                    DataGridViewCell CeldID = new DataGridViewTextBoxCell();
-                    CeldID.Value = item.cedula;
-                    fila.Cells.Add(CeldID);
-
-                    DataGridViewCell CeldPN = new DataGridViewTextBoxCell();
-                    CeldPN.Value = item.nombre;
-                    fila.Cells.Add(CeldPN);
-
-                    DataGridViewCell CeldSN = new DataGridViewTextBoxCell();
-                    CeldSN.Value =  item.nombre2;
-                    fila.Cells.Add(CeldSN);
-
-                    DataGridViewCell CeldPA = new DataGridViewTextBoxCell();
-                    CeldPA.Value = item.apellido;
-                    fila.Cells.Add(CeldPA);
-
-                    DataGridViewCell CeldSA = new DataGridViewTextBoxCell();
-                    CeldSA.Value =  item.apellido2;
-                    fila.Cells.Add(CeldSA);
-
-                    DataGridViewCell CeldID_Admin = new DataGridViewTextBoxCell();
-                    CeldID_Admin.Value = item.CC_ADMIN;
-                    fila.Cells.Add(CeldID_Admin);
-
-                    dataGridEmpleado.Rows.Add(fila);
+                    dataGridEmpleado.Rows.Add(new object[]
+                    {
+                        item.cedula,
+                        item.nombre,
+                        item.nombre2,
+                        item.apellido,
+                        item.apellido2,
+                        item.FechaInicio
+                    }
+                    );
                 }
-            }
+            }     
+                
+            
         }
 
         void LimpiarCampoEmpleados()
@@ -97,7 +97,112 @@ namespace Presentacion
 
         private void Manejo_Empleados_Load(object sender, EventArgs e)
         {
+            txtE_cedula_A.Text = logInForm.Admint;
             VerDatosEmpleados();
+        }
+
+        private void txtbusquedaE_TextChanged(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtbusquedaE.Text))
+            {
+                dataGridEmpleado.Rows.Clear();
+                VerDatosEmpleados();
+            }
+            else
+            {
+                dataGridEmpleado.Rows.Clear();
+                var busqueda = ServicioEmpleados.BuscarPorTodo(txtbusquedaE.Text);
+                foreach (var item in busqueda)
+                {
+                    
+                    dataGridEmpleado.Rows.Add(new object[]
+                    {
+                        item.cedula,
+                        item.nombre,
+                        item.nombre2,
+                        item.apellido,
+                        item.apellido2,
+                        item.FechaInicio
+                    }
+                    );
+                }
+            }
+           
+
+        }
+        void Modificar()
+        {
+
+            if (((string.IsNullOrEmpty(txtE_cedula_A.Text) || (string.IsNullOrEmpty(txtE_cedula.Text) || (string.IsNullOrEmpty(txtE_nombre.Text) || (string.IsNullOrEmpty(txtE_apellido.Text)))))))
+            {
+                MessageBox.Show("DIGITE VALORES EN LOS CAMPOS");
+            }
+            else
+            {
+                if (ServicioEmpleados.BuscarEmpleado(txtE_cedula.Text) == "S")
+                {
+                    Logica.IEmpleados empleados = new Logica.IEmpleados();
+                    var empleado = new Empleado();
+                    empleado.cedula = txtE_cedula.Text;
+                    empleado.nombre = txtE_nombre.Text;
+                    empleado.nombre2 = txtE_nombre2.Text;
+                    empleado.apellido = txtE_apellido.Text;
+                    empleado.apellido2 = txtE_apellido2.Text;
+                    var estado = empleados.actualizar(empleado);
+                    MessageBox.Show(estado.ToString());
+                    LimpiarCampoEmpleados();
+                    dataGridEmpleado.Rows.Clear();
+                    VerDatosEmpleados();
+                }
+                else
+                {
+                    MessageBox.Show("EMPLEADO NO ENCONTRADO");
+                }
+               
+            }
+           
+        }
+        void Eliminar()
+        {
+            if (string.IsNullOrEmpty
+                (txtE_cedula.Text))
+            {
+                MessageBox.Show("DIGITE LA CEDULA DEL EMPLEADO QUE QUIERE ELIMINAR");
+            }
+            else
+            {
+                if (ServicioEmpleados.BuscarEmpleado(txtE_cedula.Text) == "S")
+                {
+                    Logica.IEmpleados empleados = new Logica.IEmpleados();
+                    var empleado = new Empleado();
+                    empleado.cedula = txtE_cedula.Text;
+                    var estado = empleados.Eliminar(empleado);
+                    MessageBox.Show(estado.ToString());
+                    LimpiarCampoEmpleados();
+                    dataGridEmpleado.Rows.Clear();
+                    VerDatosEmpleados();
+                }
+                else
+                {
+                    MessageBox.Show("EMPLEADO NO ENCONTRADO");
+                }
+               
+            }
+           
+        }
+        private void btnRegistrarEmpleados_Click_1(object sender, EventArgs e)
+        {
+            RegistroEmpleados();
+        }
+
+        private void BtnModificarEmp_Click(object sender, EventArgs e)
+        {
+            Modificar();
+        }
+
+        private void BtnEliminarEmp_Click(object sender, EventArgs e)
+        {
+            Eliminar();
         }
     }
 }

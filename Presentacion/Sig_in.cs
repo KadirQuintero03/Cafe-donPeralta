@@ -21,19 +21,27 @@ namespace Presentacion
             InitializeComponent();
            
         }
-        //No se si te diste cuenta, pero si quitas el admin services, si te lo compila Xd
+    
 
         void ingresar_admin()
         {
-            var Admin = new Admin();
-            Admin.cedula = txtA_cedula.Text;
-            Admin.nombre = txtA_nombre.Text;
-            Admin.nombre2 = txtA_nombre2.Text;
-            Admin.apellido = txtA_apellido.Text;
-            Admin.apellido2 = txtA_apellido2.Text;
-            Admin.contraseña = txtA_contraseña.Text;
-            var estado = adminservices.Add(Admin);
-            MessageBox.Show(estado.ToString());
+            if ((string.IsNullOrEmpty(txtA_cedula.Text) || (string.IsNullOrEmpty(txtA_nombre.Text) || (string.IsNullOrEmpty(txtA_apellido.Text) || (string.IsNullOrEmpty(txtA_contraseña.Text))))))
+            {
+                MessageBox.Show("LLENE LOS VALORES EN LOS CAMPOS CORRESPONDIENTES");
+            }
+            else
+            {
+                var Admin = new Admin();
+                Admin.cedula = txtA_cedula.Text;
+                Admin.nombre = txtA_nombre.Text;
+                Admin.nombre2 = txtA_nombre2.Text;
+                Admin.apellido = txtA_apellido.Text;
+                Admin.apellido2 = txtA_apellido2.Text;
+                Admin.contraseña = txtA_contraseña.Text;
+                var estado = adminservices.Add(Admin);
+                MessageBox.Show(estado.ToString());
+            }
+                
         }
         private void button1_Click(object sender, EventArgs e)
         {

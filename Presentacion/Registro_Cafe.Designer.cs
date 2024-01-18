@@ -33,12 +33,12 @@
             this.TxtKilosC = new System.Windows.Forms.TextBox();
             this.TxtKilosS = new System.Windows.Forms.TextBox();
             this.dataGridCafe = new System.Windows.Forms.DataGridView();
-            this.btnregistrar_cafe = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.ColumNcafe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumSecos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumCerezas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumFechacafe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnregistrar_cafe = new System.Windows.Forms.Button();
+            this.btnPdfCafe = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCafe)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,9 +47,10 @@
             this.txtE_cedula_A2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.txtE_cedula_A2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtE_cedula_A2.Font = new System.Drawing.Font("Franklin Gothic Book", 12F);
-            this.txtE_cedula_A2.Location = new System.Drawing.Point(344, 105);
+            this.txtE_cedula_A2.Location = new System.Drawing.Point(459, 129);
+            this.txtE_cedula_A2.Margin = new System.Windows.Forms.Padding(4);
             this.txtE_cedula_A2.Name = "txtE_cedula_A2";
-            this.txtE_cedula_A2.Size = new System.Drawing.Size(112, 19);
+            this.txtE_cedula_A2.Size = new System.Drawing.Size(149, 23);
             this.txtE_cedula_A2.TabIndex = 4;
             // 
             // TxtKilosC
@@ -57,9 +58,10 @@
             this.TxtKilosC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.TxtKilosC.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TxtKilosC.Font = new System.Drawing.Font("Franklin Gothic Book", 12F);
-            this.TxtKilosC.Location = new System.Drawing.Point(431, 156);
+            this.TxtKilosC.Location = new System.Drawing.Point(575, 192);
+            this.TxtKilosC.Margin = new System.Windows.Forms.Padding(4);
             this.TxtKilosC.Name = "TxtKilosC";
-            this.TxtKilosC.Size = new System.Drawing.Size(120, 19);
+            this.TxtKilosC.Size = new System.Drawing.Size(160, 23);
             this.TxtKilosC.TabIndex = 5;
             // 
             // TxtKilosS
@@ -67,9 +69,10 @@
             this.TxtKilosS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.TxtKilosS.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TxtKilosS.Font = new System.Drawing.Font("Franklin Gothic Book", 12F);
-            this.TxtKilosS.Location = new System.Drawing.Point(262, 155);
+            this.TxtKilosS.Location = new System.Drawing.Point(349, 191);
+            this.TxtKilosS.Margin = new System.Windows.Forms.Padding(4);
             this.TxtKilosS.Name = "TxtKilosS";
-            this.TxtKilosS.Size = new System.Drawing.Size(120, 19);
+            this.TxtKilosS.Size = new System.Drawing.Size(160, 23);
             this.TxtKilosS.TabIndex = 6;
             // 
             // dataGridCafe
@@ -91,10 +94,40 @@
             this.ColumCerezas,
             this.ColumFechacafe});
             this.dataGridCafe.GridColor = System.Drawing.SystemColors.ActiveBorder;
-            this.dataGridCafe.Location = new System.Drawing.Point(120, 256);
+            this.dataGridCafe.Location = new System.Drawing.Point(160, 315);
+            this.dataGridCafe.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridCafe.Name = "dataGridCafe";
-            this.dataGridCafe.Size = new System.Drawing.Size(585, 171);
+            this.dataGridCafe.RowHeadersWidth = 51;
+            this.dataGridCafe.Size = new System.Drawing.Size(780, 210);
             this.dataGridCafe.TabIndex = 7;
+            // 
+            // ColumNcafe
+            // 
+            this.ColumNcafe.HeaderText = "N°Cafe ";
+            this.ColumNcafe.MinimumWidth = 6;
+            this.ColumNcafe.Name = "ColumNcafe";
+            this.ColumNcafe.Width = 60;
+            // 
+            // ColumSecos
+            // 
+            this.ColumSecos.HeaderText = "Secos Recolectados";
+            this.ColumSecos.MinimumWidth = 6;
+            this.ColumSecos.Name = "ColumSecos";
+            this.ColumSecos.Width = 165;
+            // 
+            // ColumCerezas
+            // 
+            this.ColumCerezas.HeaderText = "Cerezas Recolectadas";
+            this.ColumCerezas.MinimumWidth = 6;
+            this.ColumCerezas.Name = "ColumCerezas";
+            this.ColumCerezas.Width = 165;
+            // 
+            // ColumFechacafe
+            // 
+            this.ColumFechacafe.HeaderText = "Fecha Registro ";
+            this.ColumFechacafe.MinimumWidth = 6;
+            this.ColumFechacafe.Name = "ColumFechacafe";
+            this.ColumFechacafe.Width = 150;
             // 
             // btnregistrar_cafe
             // 
@@ -102,65 +135,45 @@
             this.btnregistrar_cafe.FlatAppearance.BorderSize = 0;
             this.btnregistrar_cafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnregistrar_cafe.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.btnregistrar_cafe.Location = new System.Drawing.Point(280, 201);
+            this.btnregistrar_cafe.Location = new System.Drawing.Point(373, 247);
+            this.btnregistrar_cafe.Margin = new System.Windows.Forms.Padding(4);
             this.btnregistrar_cafe.Name = "btnregistrar_cafe";
-            this.btnregistrar_cafe.Size = new System.Drawing.Size(87, 29);
+            this.btnregistrar_cafe.Size = new System.Drawing.Size(116, 36);
             this.btnregistrar_cafe.TabIndex = 8;
             this.btnregistrar_cafe.Text = "Registrar";
             this.btnregistrar_cafe.UseVisualStyleBackColor = false;
             this.btnregistrar_cafe.Click += new System.EventHandler(this.btnregistrar_cafe_Click);
             // 
-            // button2
+            // btnPdfCafe
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.button2.Location = new System.Drawing.Point(445, 201);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(91, 29);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Modificar";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // ColumNcafe
-            // 
-            this.ColumNcafe.HeaderText = "N°Cafe ";
-            this.ColumNcafe.Name = "ColumNcafe";
-            this.ColumNcafe.Width = 60;
-            // 
-            // ColumSecos
-            // 
-            this.ColumSecos.HeaderText = "Secos Recolectados";
-            this.ColumSecos.Name = "ColumSecos";
-            this.ColumSecos.Width = 165;
-            // 
-            // ColumCerezas
-            // 
-            this.ColumCerezas.HeaderText = "Cerezas Recolectadas";
-            this.ColumCerezas.Name = "ColumCerezas";
-            this.ColumCerezas.Width = 165;
-            // 
-            // ColumFechacafe
-            // 
-            this.ColumFechacafe.HeaderText = "Fecha Registro ";
-            this.ColumFechacafe.Name = "ColumFechacafe";
-            this.ColumFechacafe.Width = 150;
+            this.btnPdfCafe.BackColor = System.Drawing.Color.Transparent;
+            this.btnPdfCafe.FlatAppearance.BorderSize = 0;
+            this.btnPdfCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPdfCafe.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPdfCafe.Location = new System.Drawing.Point(575, 247);
+            this.btnPdfCafe.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPdfCafe.Name = "btnPdfCafe";
+            this.btnPdfCafe.Size = new System.Drawing.Size(142, 36);
+            this.btnPdfCafe.TabIndex = 9;
+            this.btnPdfCafe.Text = "PDF";
+            this.btnPdfCafe.UseVisualStyleBackColor = false;
+            this.btnPdfCafe.Click += new System.EventHandler(this.btnPdfCafe_Click);
             // 
             // Registro_Cafe
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Presentacion.Properties.Resources.Registrar_Cafes__1_1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(825, 450);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(1100, 554);
+            this.Controls.Add(this.btnPdfCafe);
             this.Controls.Add(this.btnregistrar_cafe);
             this.Controls.Add(this.dataGridCafe);
             this.Controls.Add(this.TxtKilosS);
             this.Controls.Add(this.TxtKilosC);
             this.Controls.Add(this.txtE_cedula_A2);
             this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Registro_Cafe";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro_Cafe";
@@ -178,7 +191,7 @@
         private System.Windows.Forms.TextBox TxtKilosS;
         private System.Windows.Forms.DataGridView dataGridCafe;
         private System.Windows.Forms.Button btnregistrar_cafe;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnPdfCafe;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumNcafe;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumSecos;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumCerezas;

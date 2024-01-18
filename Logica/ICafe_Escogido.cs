@@ -17,17 +17,26 @@ namespace Logica
             var estado = registrar.registrarES(entity);
             return estado;
         }
-
+        public string Actualizar(Reg_Escogidos entity)
+        {
+            var estado= registrar.Acturalizar(entity);
+            return estado;
+        }
         public string Buscar(Reg_Escogidos entity)
         {
             throw new NotImplementedException();
         }
 
-        public List<Reg_Escogidos> GetAll()
+        public List<Reg_Escogidos> GetAll(string admin)
         {
-            throw new NotImplementedException();
+            return registrar.GetAll(admin); 
         }
-        
+        public List<Reg_Escogidos> BuscarPorTodo(string valor)
+        {
+            List<Reg_Escogidos> lista = new List<Reg_Escogidos>();
+            return lista;
+
+        }
     }
 }
 

@@ -75,7 +75,7 @@
             this.btn_regEmp.Name = "btn_regEmp";
             this.btn_regEmp.Size = new System.Drawing.Size(183, 32);
             this.btn_regEmp.TabIndex = 3;
-            this.btn_regEmp.Text = "Registrar_Empleado";
+            this.btn_regEmp.Text = "Registrar Empleado";
             this.btn_regEmp.UseVisualStyleBackColor = false;
             this.btn_regEmp.Click += new System.EventHandler(this.btn_regEmp_Click);
             // 
@@ -89,7 +89,7 @@
             this.btn_regPed.Name = "btn_regPed";
             this.btn_regPed.Size = new System.Drawing.Size(164, 32);
             this.btn_regPed.TabIndex = 4;
-            this.btn_regPed.Text = "Registrar_Pedido";
+            this.btn_regPed.Text = "Registrar Pedido";
             this.btn_regPed.UseVisualStyleBackColor = false;
             this.btn_regPed.Click += new System.EventHandler(this.btn_regPed_Click);
             // 
@@ -103,7 +103,7 @@
             this.btn_regCaf.Name = "btn_regCaf";
             this.btn_regCaf.Size = new System.Drawing.Size(164, 32);
             this.btn_regCaf.TabIndex = 5;
-            this.btn_regCaf.Text = "Registrar_Cafe";
+            this.btn_regCaf.Text = "Registrar Cafe";
             this.btn_regCaf.UseVisualStyleBackColor = false;
             this.btn_regCaf.Click += new System.EventHandler(this.btn_regCaf_Click);
             // 
@@ -117,7 +117,7 @@
             this.btn_regFac.Name = "btn_regFac";
             this.btn_regFac.Size = new System.Drawing.Size(164, 32);
             this.btn_regFac.TabIndex = 6;
-            this.btn_regFac.Text = "Registrar_Factura";
+            this.btn_regFac.Text = "Registrar Factura";
             this.btn_regFac.UseVisualStyleBackColor = false;
             this.btn_regFac.Click += new System.EventHandler(this.btn_regFac_Click);
             // 
@@ -131,7 +131,7 @@
             this.btn_regEsc.Name = "btn_regEsc";
             this.btn_regEsc.Size = new System.Drawing.Size(164, 32);
             this.btn_regEsc.TabIndex = 7;
-            this.btn_regEsc.Text = "Registrar_Escogido";
+            this.btn_regEsc.Text = "Cosecha Escogida";
             this.btn_regEsc.UseVisualStyleBackColor = false;
             this.btn_regEsc.Click += new System.EventHandler(this.btn_regEsc_Click);
             // 
@@ -146,10 +146,11 @@
             this.btnNomina.TabIndex = 8;
             this.btnNomina.Text = "Nomina";
             this.btnNomina.UseVisualStyleBackColor = false;
+            this.btnNomina.Click += new System.EventHandler(this.btnNomina_Click);
             // 
             // Acceso_Admin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = global::Presentacion.Properties.Resources.Sign_In1;

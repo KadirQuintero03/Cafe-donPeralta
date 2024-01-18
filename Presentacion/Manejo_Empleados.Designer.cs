@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtE_cedula_A = new System.Windows.Forms.TextBox();
             this.BtnEliminarEmp = new System.Windows.Forms.Button();
             this.BtnModificarEmp = new System.Windows.Forms.Button();
@@ -72,6 +72,7 @@
             this.BtnEliminarEmp.TabIndex = 27;
             this.BtnEliminarEmp.Text = "Eliminar";
             this.BtnEliminarEmp.UseVisualStyleBackColor = false;
+            this.BtnEliminarEmp.Click += new System.EventHandler(this.BtnEliminarEmp_Click);
             // 
             // BtnModificarEmp
             // 
@@ -85,6 +86,7 @@
             this.BtnModificarEmp.TabIndex = 26;
             this.BtnModificarEmp.Text = "Modificar";
             this.BtnModificarEmp.UseVisualStyleBackColor = false;
+            this.BtnModificarEmp.Click += new System.EventHandler(this.BtnModificarEmp_Click);
             // 
             // btnRegistrarEmpleados
             // 
@@ -98,19 +100,20 @@
             this.btnRegistrarEmpleados.TabIndex = 25;
             this.btnRegistrarEmpleados.Text = "Registrar";
             this.btnRegistrarEmpleados.UseVisualStyleBackColor = false;
+            this.btnRegistrarEmpleados.Click += new System.EventHandler(this.btnRegistrarEmpleados_Click_1);
             // 
             // dataGridEmpleado
             // 
             this.dataGridEmpleado.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridEmpleado.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 12F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridEmpleado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 12F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridEmpleado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridEmpleado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridEmpleado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumID,
@@ -119,14 +122,14 @@
             this.ColumPA,
             this.ColumSA,
             this.ColumnFecha});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridEmpleado.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Franklin Gothic Book", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridEmpleado.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridEmpleado.Location = new System.Drawing.Point(40, 258);
             this.dataGridEmpleado.Name = "dataGridEmpleado";
             this.dataGridEmpleado.RowHeadersWidth = 51;
@@ -236,6 +239,7 @@
             this.txtbusquedaE.Name = "txtbusquedaE";
             this.txtbusquedaE.Size = new System.Drawing.Size(145, 19);
             this.txtbusquedaE.TabIndex = 31;
+            this.txtbusquedaE.TextChanged += new System.EventHandler(this.txtbusquedaE_TextChanged);
             // 
             // Manejo_Empleados
             // 

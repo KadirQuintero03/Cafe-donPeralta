@@ -18,15 +18,26 @@ namespace Logica
             var estado = pedidos.RegistrarPedido(entity);
             return estado;
         }
+        public string add(Detalle_Pedidos entity)
+        {
+            var estado = pedidos.RegistrarDetallePedido(entity);
+            return estado;
+        }
 
         public string Buscar(Pedidos entity)
         {
             throw new NotImplementedException();
         }
 
-        public List<Pedidos> GetAll()
+        public List<Pedidos> GetAll(string admin)
         {
-            throw new NotImplementedException();
+            return pedidos.GetAll(admin);
+        }
+        public List<Pedidos> BuscarPorTodo(string valor)
+        {
+            List<Pedidos> pedidos= new List<Pedidos>(); 
+            return pedidos;
+
         }
     }
 }

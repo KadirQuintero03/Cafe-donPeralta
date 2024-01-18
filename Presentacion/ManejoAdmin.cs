@@ -65,31 +65,44 @@ namespace Presentacion
         private void btn_regEmp_Click(object sender, EventArgs e)
         {
             var empleado = new Manejo_Empleados();
+            empleado.logInForm = logInForm;
             empleado.Show();
         }
 
         private void btn_regPed_Click(object sender, EventArgs e)
         {
             var pedido = new Registro_Pedidos();
+            pedido.logInForm = logInForm;
             pedido.Show();
         }
 
         private void btn_regCaf_Click(object sender, EventArgs e)
         {
             var cafe = new Registro_Cafe();
+            cafe.logInForm = logInForm;
             cafe.Show();
         }
 
         private void btn_regEsc_Click(object sender, EventArgs e)
         {
             var escogido = new Registro_Escogidos();
+            escogido.logInForm = logInForm;
             escogido.Show();
         }
 
         private void btn_regFac_Click(object sender, EventArgs e)
         {
             var venta = new Factura_Venta();
+            venta.logInForm = logInForm;
             venta.Show();
+        }
+
+        private void btnNomina_Click(object sender, EventArgs e)
+        {
+            var nomina = new Nomina();
+            nomina.logInForm = logInForm;
+            nomina.Show();
+
         }
     }
 }

@@ -9,8 +9,9 @@ namespace Presentacion
     public class AdminAccess
     {
         Acceso_Admin m = new Acceso_Admin();
-        public void ManejoAdmin()
+         public void ManejoAdmin()
         {
+
         }
     }
 }

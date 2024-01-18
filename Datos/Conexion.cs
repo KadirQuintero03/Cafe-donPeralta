@@ -30,7 +30,7 @@ namespace Datos
 
         public void AbrirDB()
         {
-            connection.Open();
+            if (connection.State != ConnectionState.Open) { connection.Open(); }
         }
         public OracleConnection miconexion()
         {

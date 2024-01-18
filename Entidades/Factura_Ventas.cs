@@ -8,10 +8,10 @@ namespace Entidades
 {
     public class Factura_Ventas
     {
-        public string CC_ADMIN { get; set; }
-        public string Factor { get; set;}
-        public decimal Kilos_Netos { get; set; }
-        public decimal Valor_Kilos { get; set; }
-        public decimal Valor_BaseKilos { get; set; }
+        public string ID_venta { get; set; }
+        public string CC_ADMIN { get; set;}
+        public string Nombre_Empresa { get; set; }
+        public DateTime fecha { get; set; }
+      
     }
 }

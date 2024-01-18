@@ -1,1 +1,0 @@
-# Gestio_Finca_de_Cafe

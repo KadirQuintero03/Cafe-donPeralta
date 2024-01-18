@@ -10,6 +10,6 @@ namespace Logica
     {
         string Add(T entity);
         string Buscar(T entity);
-        List<T> GetAll();
+        List<T> GetAll(string admin);
     }
 }

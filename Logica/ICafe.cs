@@ -13,7 +13,11 @@ namespace Logica
         RegistrarCafe registrado = new RegistrarCafe();
         Conexion conexion = new Conexion();
        
-
+        public string Actualizar(Reg_Cafés entity)
+        {
+            var estado = registrado.Actualizar(entity);
+            return estado;
+        }
         public string Add(Reg_Cafés entity)
         {
             var estado = registrado.RegistradoCafe(entity);
@@ -25,9 +29,15 @@ namespace Logica
             throw new NotImplementedException();
         }
 
-        public List<Reg_Cafés> GetAll()
+        public List<Reg_Cafés> GetAll(string admin)
         {
-            throw new NotImplementedException();
+           return registrado.GetAll(admin);
+        }
+        public List<Reg_Cafés> BuscarPorTodo(string valor)
+        {
+            List<Reg_Cafés> lista = new List<Reg_Cafés>();
+            return lista;
+
         }
     }
 }
