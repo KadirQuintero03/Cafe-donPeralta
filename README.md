@@ -1,10 +1,9 @@
 # Café Don Peralta
 
-Bienvenido al repositorio de Café Don Peralta. Este README es una plantilla completa para documentar el proyecto: propósito, instalación, uso, estructura y cómo contribuir. Adapta las secciones a la realidad del repositorio (stack, comandos, rutas, capturas de pantalla, licencias).
+Bienvenido al repositorio de Café Don Peralta.
 
 ## Tabla de contenidos
 - [Descripción](#descripción)
-- [Demo / Capturas](#demo--capturas)
 - [Características](#características)
 - [Requisitos](#requisitos)
 - [Instalación](#instalación)
@@ -15,17 +14,8 @@ Bienvenido al repositorio de Café Don Peralta. Este README es una plantilla com
 - [Contacto](#contacto)
 
 ## Descripción
-Café Don Peralta es (breve descripción del proyecto — p. ej. una web de comercio electrónico para una cafetería local, una app para gestionar pedidos, o un sitio informativo).  
+Café Don Peralta es una web de comercio electrónico para una cafetería local.  
 Objetivo: ofrecer una experiencia clara para clientes y administradores, con funcionalidades para mostrar productos, realizar pedidos y gestionar inventario.
-
-## Demo / Capturas
-Incluye aquí enlaces o imágenes de la aplicación en funcionamiento.
-
-- Demo en vivo: (URL si aplica)
-- Captura de pantalla principal:
-  ![Captura principal](./docs/screenshot.png)
-
-(Reemplaza o elimina esta sección si no aplica.)
 
 ## Características
 - Mostrar el menú y productos del café
